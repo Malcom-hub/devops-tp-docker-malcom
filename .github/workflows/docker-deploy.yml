@@ -2,11 +2,11 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
     tags:
-      - "v*"
-  pull_request:
-    branches: [ "main" ]
+      - 'v*.*.*'
+
 
 env:
   REGISTRY: ghcr.io
@@ -47,7 +47,7 @@ jobs:
         type=raw,value=latest
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
